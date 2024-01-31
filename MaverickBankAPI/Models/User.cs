@@ -12,7 +12,7 @@ namespace MaverickBankAPI.Models
         /// Gets or sets the user ID.
         /// </summary>
         [Key]
-        public int UserId { get; set; }
+        public int UserID { get; set; }
 
         /// <summary>
         /// Gets or sets the user name.
@@ -34,7 +34,7 @@ namespace MaverickBankAPI.Models
         /// </summary>
         public User()
         {
-            UserId = 0;
+            UserID = 0;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace MaverickBankAPI.Models
         /// <param name="userType">The type of the user.</param>
         public User(int userId, string userName, string password, string userType)
         {
-            UserId = userId;
+            UserID = userId;
             UserName = userName;
             Password = password;
             UserType = userType;
@@ -73,7 +73,7 @@ namespace MaverickBankAPI.Models
         public bool Equals(User? other)
         {
             var user = other ?? new User();
-            return this.UserId.Equals(user.UserId);
+            return this.UserID.Equals(user.UserID);
         }
     }
 }
