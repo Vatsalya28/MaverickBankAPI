@@ -7,7 +7,7 @@
         public int UserID { get; set; }
         public string Position { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }
 
