@@ -18,7 +18,7 @@ namespace MaverickBankAPI.Models
 
 
 
-
+#region Annotation
 //using System.ComponentModel.DataAnnotations.Schema;
 //using System.ComponentModel.DataAnnotations;
 
@@ -72,3 +72,4 @@ namespace MaverickBankAPI.Models
 //        public string IFSCCode { get; set; }
 //    }
 //}
+#endregion
