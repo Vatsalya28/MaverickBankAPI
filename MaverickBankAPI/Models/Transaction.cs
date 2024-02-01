@@ -69,7 +69,8 @@
 
         public bool Equals(Transaction? other)
         {
-            return other.TransactionID == this.TransactionID;
+            var transaction = other ?? new Transaction();
+            return this.TransactionID.Equals(transaction.TransactionID);
         }
     }
 }

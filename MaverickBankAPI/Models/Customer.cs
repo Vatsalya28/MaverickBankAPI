@@ -101,7 +101,8 @@
        
             public bool Equals(Customer? other)
             {
-                return other.CustomerID == this.CustomerID;
+            var customer = other ?? new Customer();
+            return this.CustomerID.Equals(customer.CustomerID);
             }
         
     }

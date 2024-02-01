@@ -28,6 +28,7 @@ namespace MaverickBankAPI.Models
         /// Gets or sets the balance of the account.
         /// </summary>
         public double Balance { get; set; }
+        public string Status { set; get; }
 
         /// <summary>
         /// Gets or sets the collection of transactions where this account is the source.
@@ -41,7 +42,7 @@ namespace MaverickBankAPI.Models
 
         public Account()
         {
-
+            Status = "Pending";
         }
 
         /// <summary>
@@ -51,12 +52,13 @@ namespace MaverickBankAPI.Models
         /// <param name="customerId">The customer ID associated with the account.</param>
         /// <param name="accountType">The type of the account.</param>
         /// <param name="balance">The balance of the account.</param>
-        public Account(int accountId, int customerId, string accountType, double balance)
+        public Account(int accountId, int customerId, string accountType, double balance, string status)
         {
             AccountID = accountId;
             CustomerID = customerId;
             AccountType = accountType;
             Balance = balance;
+            Status = status;
         }
 
         public bool Equals(Account? other)
