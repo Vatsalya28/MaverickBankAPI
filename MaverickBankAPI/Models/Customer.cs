@@ -1,34 +1,114 @@
-﻿using MaverickBankAPI.Models;
-
-public class Customer
+﻿namespace MaverickBankAPI.Models
 {
-    public int CustomerID { get; set; }
-    public int UserID { get; set; }
-    public User User { get; set; } 
-
-    public string Name { get; set; }
-    public string Gender { get; set; }
-    public string ContactNumber { get; set; }
-    public string Address { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public string AadharNumber { get; set; }
-    public string PanNumber { get; set; }
-    public int Age
+    public class Customer:IEquatable<Customer>
     {
-        get
+        /// <summary>
+        /// Gets or sets the unique identifier for the customer.
+        /// </summary>
+        public int CustomerID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identifier of the user associated with the customer.
+        /// </summary>
+        public int UserID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user entity associated with the customer.
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the customer.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the gender of the customer.
+        /// </summary>
+        public string Gender { get; set; }
+
+        /// <summary>
+        /// Gets or sets the contact number of the customer.
+        /// </summary>
+        public string ContactNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address of the customer.
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date of birth of the customer.
+        /// </summary>
+        public DateTime DateOfBirth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Aadhar number of the customer.
+        /// </summary>
+        public string AadharNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PAN (Permanent Account Number) of the customer.
+        /// </summary>
+        public string PanNumber { get; set; }
+
+        /// <summary>
+        /// Gets the age of the customer based on the date of birth.
+        /// </summary>
+        public int Age
         {
-            DateTime today = DateTime.Today;
-            int age = today.Year - DateOfBirth.Year;
-            return age;
+            get
+            {
+                DateTime today = DateTime.Today;
+                int age = today.Year - DateOfBirth.Year;
+                return age;
+            }
         }
+
+        /// <summary>
+        /// Gets or sets the collection of accounts associated with the customer.
+        /// </summary>
+        public ICollection<Account> Accounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of beneficiaries associated with the customer.
+        /// </summary>
+        public ICollection<Beneficiary> Beneficiaries { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of loans associated with the customer.
+        /// </summary>
+        public ICollection<Loan> Loans { get; set; }
+
+        public Customer()
+        {
+
+        }
+
+        public Customer(int customerId, int userId, User user, string name, string gender, string contactNumber, string address, DateTime dateOfBirth, string aadharNumber, string panNumber)
+        {
+            CustomerID = customerId;
+            UserID = userId;
+            Name = name;
+            Gender = gender;
+            ContactNumber = contactNumber;
+            Address = address;
+            DateOfBirth = dateOfBirth;
+            AadharNumber = aadharNumber;
+            PanNumber = panNumber;
+        }
+
+       
+            public bool Equals(Customer? other)
+            {
+                return other.CustomerID == this.CustomerID;
+            }
+        
     }
 
-
-    public ICollection<Account> Accounts { get; set; }
-    public ICollection<Beneficiary> Beneficiaries { get; set; }
-    public ICollection<Loan> Loans { get; set; }
-
 }
+
+
 
 
 

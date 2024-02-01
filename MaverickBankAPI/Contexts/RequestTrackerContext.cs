@@ -9,7 +9,7 @@ namespace MaverickBankAPI.Contexts
         public RequestTrakerContext(DbContextOptions options) : base(options)
         {
 
-
+            
         }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }
@@ -19,6 +19,9 @@ namespace MaverickBankAPI.Contexts
         public DbSet<Beneficiary> Beneficiaries { get; set; }
         public DbSet<BankEmployee> BankEmployees { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Bank> Banks { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +32,21 @@ namespace MaverickBankAPI.Contexts
                 entity.Property(e => e.Password).IsRequired();
                 
             });
+
+            modelBuilder.Entity<Bank>(entity =>
+            {entity.HasKey(e => e.BankID); 
+               
+            });
+
+            modelBuilder.Entity<Branch>(entity =>
+            {
+                entity.HasKey(e => e.IFSCCode);
+                entity.HasOne(e => e.Bank)
+                    .WithMany(b => b.Branches) 
+                    .HasForeignKey(e => e.BankID);
+            });
+
+
 
 
             modelBuilder.Entity<Customer>()
@@ -68,12 +86,17 @@ namespace MaverickBankAPI.Contexts
                 .IsRequired();
 
             modelBuilder.Entity<Transaction>()
-                .HasOne(t => t.Account)
-                .WithMany(a => a.Transactions)
-                .HasForeignKey(t => t.AccountID)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(t => t.SourceAccount)
+                .WithMany(a => a.SourceTransaction)
+                .HasForeignKey(t => t.Source_ID);
+
 
            
+            modelBuilder.Entity<Transaction>()
+                .HasOne(t => t.DestinationAccount)
+                .WithMany(a=>a.DestinationTransaction)
+                .HasForeignKey(t => t.Destination_Id)
+                ;
 
 
 

@@ -1,16 +1,70 @@
-﻿public class Account
+﻿using System.Collections.Generic;
+
+namespace MaverickBankAPI.Models
 {
-    public int AccountID { get; set; }
-    public int CustomerID { get; set; }
-    public Customer Customer { get; set; }
-    
-    public string AccountType { get; set; }
-    public double Balance { get; set; }
+    public class Account:IEquatable<Account>
+    {
+        /// <summary>
+        /// Gets or sets the unique identifier for the account.
+        /// </summary>
+        public int AccountID { get; set; }
 
-    public ICollection<Transaction> Transactions { get; set; }
+        /// <summary>
+        /// Gets or sets the customer ID associated with the account.
+        /// </summary>
+        public int CustomerID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the customer associated with the account.
+        /// </summary>
+        public Customer Customer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the account.
+        /// </summary>
+        public string AccountType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the balance of the account.
+        /// </summary>
+        public double Balance { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of transactions where this account is the source.
+        /// </summary>
+        public ICollection<Transaction> SourceTransaction { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of transactions where this account is the destination.
+        /// </summary>
+        public ICollection<Transaction> DestinationTransaction { get; set; }
+
+        public Account()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Account class with specified parameters.
+        /// </summary>
+        /// <param name="accountId">The unique identifier for the account.</param>
+        /// <param name="customerId">The customer ID associated with the account.</param>
+        /// <param name="accountType">The type of the account.</param>
+        /// <param name="balance">The balance of the account.</param>
+        public Account(int accountId, int customerId, string accountType, double balance)
+        {
+            AccountID = accountId;
+            CustomerID = customerId;
+            AccountType = accountType;
+            Balance = balance;
+        }
+
+        public bool Equals(Account? other)
+        {
+            return other.AccountID == this.AccountID;
+        }
+    }
 }
-
-
 
 
 

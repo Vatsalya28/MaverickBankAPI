@@ -1,17 +1,65 @@
 ﻿
 using MaverickBankAPI.Models;
-
+/// <summary>
+/// Represents a user entity with basic information such as user ID, username, password, and user type.
+/// </summary>
 public class User
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the user.
+    /// </summary>
     public int UserID { get; set; }
+
+    /// <summary>
+    /// Gets or sets the username of the user.
+    /// </summary>
     public string UserName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the password of the user.
+    /// </summary>
     public string Password { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of the user.
+    /// </summary>
     public string UserType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of customers associated with the user.
+    /// </summary>
     public ICollection<Customer> Customers { get; set; }
+
+    /// <summary>
+    /// Gets or sets the collection of bank employees associated with the user.
+    /// </summary>
     public ICollection<BankEmployee> BankEmployees { get; set; }
+
+    /// <summary>
+    /// Gets or sets the collection of administrators associated with the user.
+    /// </summary>
     public ICollection<Administrator> Administrators { get; set; }
+
+    public User()
+    {
+
+    }
+    /// <summary>
+    /// Initializes a new instance of the User class with specified parameters.
+    /// </summary>
+    /// <param name="userId">The unique identifier for the user.</param>
+    /// <param name="userName">The username of the user.</param>
+    /// <param name="password">The password of the user.</param>
+    /// <param name="userType">The type of the user.</param>
+    public User(int userId, string userName, string password, string userType)
+    {
+        UserID = userId;
+        UserName = userName;
+        Password = password;
+        UserType = userType;
+    }
 }
+
 
 
 

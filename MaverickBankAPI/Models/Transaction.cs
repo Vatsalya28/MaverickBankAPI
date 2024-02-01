@@ -1,16 +1,79 @@
-﻿public class Transaction
+﻿namespace MaverickBankAPI.Models
 {
-    public int TransactionID { get; set; }
-    public int AccountID { get; set; }
-    public Account Account { get; set; }
 
-    public string TransactionType { get; set; }
-    public double Amount { get; set; }
-    public int? DestinationAccountID { get; set; } // This can be null if it's not a transfer
-    public Account DestinationAccount { get; set; } // Navigation property for destination account
+    public class Transaction:IEquatable<Transaction>
+    {
+        /// <summary>
+        /// Gets or sets the unique identifier for the transaction.
+        /// </summary>
+        public int TransactionID { get; set; }
 
-    public DateTime TransactionDate { get; set; }
+        /// <summary>
+        /// Gets or sets the type of the transaction.
+        /// </summary>
+        public string TransactionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount involved in the transaction.
+        /// </summary>
+        public double Amount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date and time of the transaction.
+        /// </summary>
+        public DateTime TransactionDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the source account involved in the transaction.
+        /// </summary>
+        public int Source_ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the destination account involved in the transaction.
+        /// </summary>
+        public int Destination_Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source account associated with the transaction.
+        /// </summary>
+        public Account? SourceAccount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the destination account associated with the transaction.
+        /// </summary>
+        public Account? DestinationAccount { get; set; }
+
+        public Transaction()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Transaction class with specified parameters.
+        /// </summary>
+        /// <param name="transactionId">The unique identifier for the transaction.</param>
+        /// <param name="transactionType">The type of the transaction.</param>
+        /// <param name="amount">The amount involved in the transaction.</param>
+        /// <param name="transactionDate">The date and time of the transaction.</param>
+        /// <param name="sourceId">The ID of the source account involved in the transaction.</param>
+        /// <param name="destinationId">The ID of the destination account involved in the transaction.</param>
+        public Transaction(int transactionId, string transactionType, double amount, DateTime transactionDate, int sourceId, int destinationId)
+        {
+            TransactionID = transactionId;
+            TransactionType = transactionType;
+            Amount = amount;
+            TransactionDate = transactionDate;
+            Source_ID = sourceId;
+            Destination_Id = destinationId;
+        }
+
+        public bool Equals(Transaction? other)
+        {
+            return other.TransactionID == this.TransactionID;
+        }
+    }
 }
+
 
 
 
