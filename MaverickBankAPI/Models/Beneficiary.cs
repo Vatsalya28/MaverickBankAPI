@@ -12,7 +12,7 @@ namespace MaverickBankAPI.Models
         public string Branch { get; set; }
         public string IFSCCode { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
     }
 }
 

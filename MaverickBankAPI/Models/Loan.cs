@@ -11,7 +11,7 @@ namespace MaverickBankAPI.Models
         public int TenureMonths { get; set; }
         public string Status { get; set; } = "Pending";
 
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
     }
 }
 
