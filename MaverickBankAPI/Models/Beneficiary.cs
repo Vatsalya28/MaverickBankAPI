@@ -13,11 +13,6 @@ namespace MaverickBankAPI.Models
         public int BeneficiaryID { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique identifier of the customer associated with the beneficiary.
-        /// </summary>
-        public int CustomerID { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the beneficiary.
         /// </summary>
         public string BeneficiaryName { get; set; }
@@ -25,27 +20,27 @@ namespace MaverickBankAPI.Models
         /// <summary>
         /// Gets or sets the account number of the beneficiary.
         /// </summary>
-        public string AccountNumber { get; set; }
+        public int BeneficiaryAccountNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the bank name of the beneficiary.
+        /// Gets or sets the unique identifier of the bank associated with the beneficiary.
         /// </summary>
-        public string BankName { get; set; }
+        public int BankID { get; set; }
 
         /// <summary>
-        /// Gets or sets the branch of the beneficiary's bank.
+        /// Gets or sets the unique identifier of the customer associated with the beneficiary.
         /// </summary>
-        public string Branch { get; set; }
+        public int CustomerID { get; set; }
 
         /// <summary>
-        /// Gets or sets the IFSC code of the beneficiary's bank.
+        /// Gets or sets the associated bank object.
         /// </summary>
-        public string IFSCCode { get; set; }
+        public Bank Bank { get; set; }
 
         /// <summary>
         /// Gets or sets the associated customer object.
         /// </summary>
-        public Customer? Customer { get; set; }
+        public Customer Customer { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Beneficiary"/> class.
@@ -58,21 +53,17 @@ namespace MaverickBankAPI.Models
         /// Initializes a new instance of the <see cref="Beneficiary"/> class with specified parameters.
         /// </summary>
         /// <param name="beneficiaryID">The unique identifier for the beneficiary.</param>
-        /// <param name="customerID">The unique identifier of the customer associated with the beneficiary.</param>
         /// <param name="beneficiaryName">The name of the beneficiary.</param>
-        /// <param name="accountNumber">The account number of the beneficiary.</param>
-        /// <param name="bankName">The bank name of the beneficiary.</param>
-        /// <param name="branch">The branch of the beneficiary's bank.</param>
-        /// <param name="iFSCCode">The IFSC code of the beneficiary's bank.</param>
-        public Beneficiary(int beneficiaryID, int customerID, string beneficiaryName, string accountNumber, string bankName, string branch, string iFSCCode)
+        /// <param name="beneficiaryAccountNumber">The account number of the beneficiary.</param>
+        /// <param name="bankID">The unique identifier of the bank associated with the beneficiary.</param>
+        /// <param name="customerID">The unique identifier of the customer associated with the beneficiary.</param>
+        public Beneficiary(int beneficiaryID, string beneficiaryName, int beneficiaryAccountNumber, int bankID, int customerID)
         {
             BeneficiaryID = beneficiaryID;
-            CustomerID = customerID;
             BeneficiaryName = beneficiaryName;
-            AccountNumber = accountNumber;
-            BankName = bankName;
-            Branch = branch;
-            IFSCCode = iFSCCode;
+            BeneficiaryAccountNumber = beneficiaryAccountNumber;
+            BankID = bankID;
+            CustomerID = customerID;
         }
 
         /// <summary>
@@ -87,6 +78,7 @@ namespace MaverickBankAPI.Models
         }
     }
 }
+
 
 
 

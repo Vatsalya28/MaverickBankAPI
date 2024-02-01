@@ -115,14 +115,36 @@ namespace MaverickBankAPI.Contexts
                     .HasForeignKey(l => l.CustomerID)
                     .IsRequired();
 
+            //modelBuilder.Entity<Beneficiary>()
+            //   .HasKey(b => b.BeneficiaryID);
+
+            //modelBuilder.Entity<Beneficiary>()
+            //    .HasOne(b => b.Customer)
+            //    .WithMany(c => c.Beneficiaries)
+            //    .HasForeignKey(b => b.CustomerID)
+            //    .IsRequired();
+
+
+
+
+
             modelBuilder.Entity<Beneficiary>()
-               .HasKey(b => b.BeneficiaryID);
+            .HasKey(b => b.BeneficiaryID);
+
+
+            modelBuilder.Entity<Beneficiary>()
+            .HasOne(b => b.Bank)
+            .WithMany(bank => bank.Beneficiaries)
+            .HasForeignKey(b => b.BankID);
+
+
 
             modelBuilder.Entity<Beneficiary>()
                 .HasOne(b => b.Customer)
-                .WithMany(c => c.Beneficiaries)
-                .HasForeignKey(b => b.CustomerID)
-                .IsRequired();
+                .WithMany(customer => customer.Beneficiaries)
+                .HasForeignKey(b => b.CustomerID);
+               
+
 
             modelBuilder.Entity<BankEmployee>()
                 .HasKey(be => be.EmployeeID);
