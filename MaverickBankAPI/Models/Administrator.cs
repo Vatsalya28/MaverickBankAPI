@@ -12,6 +12,7 @@
 
 
 
+#region Annotation
 //using System.ComponentModel.DataAnnotations.Schema;
 //using System.ComponentModel.DataAnnotations;
 
@@ -45,3 +46,4 @@
 //        public string Name { get; set; }
 //    }
 //}
+#endregion

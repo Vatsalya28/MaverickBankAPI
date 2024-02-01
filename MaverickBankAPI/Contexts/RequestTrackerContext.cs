@@ -1,6 +1,6 @@
 ﻿using MaverickBankAPI.Models;
 using Microsoft.EntityFrameworkCore;
-//
+
 
 namespace MaverickBankAPI.Contexts
 {
@@ -22,6 +22,63 @@ namespace MaverickBankAPI.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.UserID);
+                entity.Property(e => e.UserName).IsRequired();
+                entity.Property(e => e.Password).IsRequired();
+                
+            });
+
+
+            modelBuilder.Entity<Customer>()
+           .HasKey(c => c.CustomerID);
+
+            modelBuilder.Entity<Customer>()
+                .Property(c => c.Name)
+                .IsRequired();
+
+            
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Customers)
+                .HasForeignKey(c => c.UserID);
+
+
+
+            modelBuilder.Entity<Account>()
+            .HasKey(a => a.AccountID);
+
+            modelBuilder.Entity<Account>()
+                .Property(a => a.AccountType).IsRequired();
+                
+
+            
+            modelBuilder.Entity<Account>()
+                .HasOne(a => a.Customer)
+                .WithMany(c => c.Accounts)
+                .HasForeignKey(a => a.CustomerID);
+
+
+            modelBuilder.Entity<Transaction>()
+            .HasKey(t => t.TransactionID);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(t => t.TransactionType)
+                .IsRequired();
+
+            modelBuilder.Entity<Transaction>()
+                .HasOne(t => t.Account)
+                .WithMany(a => a.Transactions)
+                .HasForeignKey(t => t.AccountID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+           
+
+
+
+
+
             modelBuilder.Entity<Loan>()
                     .HasKey(l => l.LoanID);
 

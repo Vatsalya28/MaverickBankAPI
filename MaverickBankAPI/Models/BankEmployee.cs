@@ -12,7 +12,7 @@
 }
 
 
-
+#region Annotation
 //using System.ComponentModel.DataAnnotations.Schema;
 //using System.ComponentModel.DataAnnotations;
 
@@ -51,3 +51,4 @@
 //        public string Position { get; set; }
 //    }
 //}
+#endregion
