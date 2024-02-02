@@ -80,12 +80,28 @@
         /// </summary>
         public ICollection<Loan> Loans { get; set; }
 
+        /// <summary>
+        /// Default constructor for the Customer class.
+        /// </summary>
         public Customer()
         {
 
         }
 
-        public Customer(int customerId, int userId, User user, string name, string gender, string contactNumber, string address, DateTime dateOfBirth, string aadharNumber, string panNumber)
+        /// <summary>
+        /// Parameterized constructor for the Customer class.
+        /// </summary>
+        /// <param name="customerId">The unique identifier for the customer.</param>
+        /// <param name="userId">The identifier of the user associated with the customer.</param>
+        /// <param name="name">The name of the customer.</param>
+        /// <param name="gender">The gender of the customer.</param>
+        /// <param name="contactNumber">The contact number of the customer.</param>
+        /// <param name="address">The address of the customer.</param>
+        /// <param name="dateOfBirth">The date of birth of the customer.</param>
+        /// <param name="aadharNumber">The Aadhar number of the customer.</param>
+        /// <param name="panNumber">The PAN (Permanent Account Number) of the customer.</param>
+
+        public Customer(int customerId, int userId, string name, string gender, string contactNumber, string address, DateTime dateOfBirth, string aadharNumber, string panNumber)
         {
             CustomerID = customerId;
             UserID = userId;
@@ -98,8 +114,13 @@
             PanNumber = panNumber;
         }
 
-       
-            public bool Equals(Customer? other)
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="other">The object to compare with the current object.</param>
+        /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
+
+        public bool Equals(Customer? other)
             {
             var customer = other ?? new Customer();
             return this.CustomerID.Equals(customer.CustomerID);

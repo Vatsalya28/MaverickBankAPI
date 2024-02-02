@@ -40,7 +40,9 @@ namespace MaverickBankAPI.Models
         /// Gets or sets the collection of administrators associated with the user.
         /// </summary>
         public ICollection<Administrator> Administrators { get; set; }
-
+        /// <summary>
+        /// Default Constructor for user
+        /// </summary>
         public User()
         {
 
@@ -59,6 +61,11 @@ namespace MaverickBankAPI.Models
             Password = password;
             UserType = userType;
         }
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="other">The object to compare with the current object.</param>
+        /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
 
         public bool Equals(User? other)
         {

@@ -43,6 +43,9 @@
         /// </summary>
         public Account? DestinationAccount { get; set; }
 
+        /// <summary>
+        /// Default constructor for transaction
+        /// </summary>
         public Transaction()
         {
 
@@ -66,6 +69,13 @@
             Source_ID = sourceId;
             Destination_Id = destinationId;
         }
+
+
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="other">The object to compare with the current object.</param>
+        /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
 
         public bool Equals(Transaction? other)
         {

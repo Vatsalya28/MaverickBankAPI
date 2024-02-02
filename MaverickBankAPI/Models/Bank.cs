@@ -27,6 +27,7 @@ namespace MaverickBankAPI.Models
         /// Gets or sets the collection of beneficiaries associated with the bank.
         /// </summary>
         public ICollection<Beneficiary> Beneficiaries { get; set; }
+        public ICollection<Account> Accounts { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Bank class.

@@ -29,6 +29,17 @@ namespace MaverickBankAPI.Models
         /// </summary>
         public double Balance { get; set; }
         public string Status { set; get; }
+       
+
+        /// <summary>
+        /// Gets or sets the foreign key for BankID.
+        /// </summary>
+        public int BankID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the associated bank.
+        /// </summary>
+        public Bank Bank { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of transactions where this account is the source.
@@ -52,14 +63,20 @@ namespace MaverickBankAPI.Models
         /// <param name="customerId">The customer ID associated with the account.</param>
         /// <param name="accountType">The type of the account.</param>
         /// <param name="balance">The balance of the account.</param>
-        public Account(int accountId, int customerId, string accountType, double balance, string status)
+        public Account(int accountId, int customerId, string accountType, double balance, string status,int bankID)
         {
             AccountID = accountId;
             CustomerID = customerId;
             AccountType = accountType;
             Balance = balance;
             Status = status;
+             BankID = bankID;
         }
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="other">The object to compare with the current object.</param>
+        /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
 
         public bool Equals(Account? other)
         {

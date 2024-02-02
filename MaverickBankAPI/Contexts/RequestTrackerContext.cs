@@ -30,12 +30,13 @@ namespace MaverickBankAPI.Contexts
                 entity.HasKey(e => e.UserID);
                 entity.Property(e => e.UserName).IsRequired();
                 entity.Property(e => e.Password).IsRequired();
+                entity.Property(e => e.UserType).IsRequired();
                 
             });
 
             modelBuilder.Entity<Bank>(entity =>
-            {entity.HasKey(e => e.BankID); 
-               
+            {entity.HasKey(e => e.BankID);
+                entity.Property(e => e.BankName).IsRequired();
             });
 
             modelBuilder.Entity<Branch>(entity =>
@@ -55,7 +56,8 @@ namespace MaverickBankAPI.Contexts
             modelBuilder.Entity<Customer>()
                 .Property(c => c.Name)
                 .IsRequired();
-
+                
+                
             
             modelBuilder.Entity<Customer>()
                 .HasOne(c => c.User)
@@ -77,6 +79,12 @@ namespace MaverickBankAPI.Contexts
                 .WithMany(c => c.Accounts)
                 .HasForeignKey(a => a.CustomerID);
 
+            modelBuilder.Entity<Account>(entity =>
+            { entity.HasOne(e => e.Bank)
+                      .WithMany(b => b.Accounts)
+                      .HasForeignKey(e => e.BankID);
+            });
+
 
             modelBuilder.Entity<Transaction>()
             .HasKey(t => t.TransactionID);
@@ -90,15 +98,11 @@ namespace MaverickBankAPI.Contexts
                 .WithMany(a => a.SourceTransaction)
                 .HasForeignKey(t => t.Source_ID);
 
-
-           
             modelBuilder.Entity<Transaction>()
-                .HasOne(t => t.DestinationAccount)
-                .WithMany(a=>a.DestinationTransaction)
-                .HasForeignKey(t => t.Destination_Id)
-                ;
-
-
+               .HasOne(t => t.DestinationAccount)
+               .WithMany(a => a.DestinationTransaction)
+               .HasForeignKey(t => t.Destination_Id)
+               ;
 
 
 
