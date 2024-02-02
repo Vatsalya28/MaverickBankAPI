@@ -19,9 +19,11 @@
     <None Remove="Models\" />
     <None Remove="Interfaces\" />
     <None Remove="Repsitories\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Repsitories\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>
