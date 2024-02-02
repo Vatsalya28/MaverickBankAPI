@@ -1,11 +1,55 @@
-﻿using System;
-namespace MaverickBankAPI.Repsitories
-{
-	public class UserRepository
-	{
-		public UserRepository()
-		{
-		}
-	}
-}
+﻿using MaverickBankAPI.Contexts;
+using MaverickBankAPI.Interfaces;
+using MaverickBankAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
+namespace MaverickBankAPI.Repositories
+{
+    public class UserRepository : IRepository<int, User>
+    {
+        private readonly RequestTrakerContext _context;
+
+        public UserRepository(RequestTrakerContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<User> Add(User item)
+        {
+            _context.Add(item);
+             _context.SaveChanges();
+            return item;
+        }
+
+        public async Task<User> Delete(int key)
+        {
+            var user = await GetAsync(key);
+            _context?.Users.Remove(user);
+            _context.SaveChanges();
+            return user;
+        }
+
+        public async Task<User> GetAsync(int key)
+        {
+            var users = await GetAsync();
+            var user = users.FirstOrDefault(u => u.UserID == key);
+            if (user != null)
+                return user;
+            throw new NoSuchUserException();
+        }
+
+        public async Task<List<User>> GetAsync()
+        {
+            var users = _context.Users.ToList();
+            return users;
+        }
+
+        public async Task<User> Update(User item)
+        {
+            var user = await GetAsync(item.UserID);
+            _context.Entry<User>(item).State = EntityState.Modified;
+            _context.SaveChanges();
+            return item;
+        }
+    }
+}

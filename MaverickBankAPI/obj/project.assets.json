@@ -2438,26 +2438,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vaibhav\\.nuget\\packages\\": {}
+    "/Users/vatsalyasinghbaghel/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vaibhav\\Source\\Repos\\MaverickBankAPI\\MaverickBankAPI\\MaverickBankAPI.csproj",
+      "projectUniqueName": "/Users/vatsalyasinghbaghel/Desktop/MaverickBankAPI/MaverickBankAPI/MaverickBankAPI.csproj",
       "projectName": "MaverickBankAPI",
-      "projectPath": "C:\\Users\\vaibhav\\Source\\Repos\\MaverickBankAPI\\MaverickBankAPI\\MaverickBankAPI.csproj",
-      "packagesPath": "C:\\Users\\vaibhav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vaibhav\\Source\\Repos\\MaverickBankAPI\\MaverickBankAPI\\obj\\",
+      "projectPath": "/Users/vatsalyasinghbaghel/Desktop/MaverickBankAPI/MaverickBankAPI/MaverickBankAPI.csproj",
+      "packagesPath": "/Users/vatsalyasinghbaghel/.nuget/packages/",
+      "outputPath": "/Users/vatsalyasinghbaghel/Desktop/MaverickBankAPI/MaverickBankAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vaibhav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/vatsalyasinghbaghel/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/local/share/dotnet/library-packs": {},
+        "/usr/local/share/dotnet/sdk/7.0.312/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2510,7 +2510,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
       }
     }
   }
