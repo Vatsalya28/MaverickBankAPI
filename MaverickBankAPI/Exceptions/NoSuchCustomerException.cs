@@ -11,7 +11,7 @@ namespace MaverickBankAPI.Repsitories
         {
             message = "No such customer with the given id";
         }
-        public override string Message => base.Message;
+        public override string Message => message;
 
 
     }

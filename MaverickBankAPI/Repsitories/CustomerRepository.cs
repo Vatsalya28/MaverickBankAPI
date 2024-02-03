@@ -3,6 +3,7 @@ using MaverickBankAPI.Contexts;
 using MaverickBankAPI.Interfaces;
 using MaverickBankAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using MaverickBankAPI.Exceptions;
 
 namespace MaverickBankAPI.Repsitories
 {
