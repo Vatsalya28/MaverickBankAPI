@@ -32,7 +32,7 @@ namespace MaverickBankAPI.Repositories
         {
             var user = await GetAsync(key);
             _context?.Users.Remove(user);
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
             _logger.LogInformation("User deleted: {@User}", user);
             return user;
         }
